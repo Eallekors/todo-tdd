@@ -37,21 +37,22 @@ Built with Node.js and Express, it uses Mongoose to interact with a MongoDB data
    git clone https://github.com/yourusername/todo-tdd.git
    cd todo-tdd
 
-Install dependencies:
+2. Install dependencies:
 
 ```bash
 
 npm install
 ```
-Set up your MongoDB connection:
+3. Set up your MongoDB connection:
 
-    Update the connection string in the mongodb.connect.js file to point to your MongoDB database.
+   - Update the connection string in the mongodb.connect.js file to point to your MongoDB database.
 
-Start the server:
+4. Start the server:
 
 ```bash
 
-    npm start
+    npm start ## starts server
+    npm run test ## for testing
 ```
 ### API Endpoints
 

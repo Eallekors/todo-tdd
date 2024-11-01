@@ -23,8 +23,7 @@ describe(endpointUrl, () => {
     
   })
 
-  it(
-    "should return 500 on malformed data with POST" + endpointUrl, async () => {
+  it("should return 500 on malformed data with POST" + endpointUrl, async () => {
       const response = await request(app)
         .post(endpointUrl)
         .send({ title: "Missing done property"});
@@ -32,8 +31,7 @@ describe(endpointUrl, () => {
       expect(response.body).toStrictEqual({
         message: "Todo validation failed: done: Path `done` is required."
       })
-    }
-  )
+  })
   it("GET " + endpointUrl, async () => {
     const response = await request(app).get(endpointUrl);
     expect(response.statusCode).toBe(200);
@@ -58,8 +56,6 @@ describe(endpointUrl, () => {
   })
 
   it("PUT " + endpointUrl, async () => {
-    console.log(endpointUrl + newTodoId)
-    
     const res = await request(app)
       .put(endpointUrl + newTodoId)
       .send(testData) 
@@ -73,6 +69,19 @@ describe(endpointUrl, () => {
       .put(endpointUrl + notExistingTodoId)
       .send(testData);
       expect(res.statusCode).toBe(404);
+  })
+
+  it("DELETE" + endpointUrl, async () => {
+    console.log(endpointUrl + newTodoId)
+    const res = await request(app)
+      .delete(endpointUrl + newTodoId)  
+    expect(res.statusCode).toBe(200)
+  })
+
+  it("DELETE todo id doesn't exist" + endpointUrl + ":todoId", async () => {
+    const response = await request(app)
+      .delete(endpointUrl + "671748f0b38e9d70b0adc25a");
+      expect(response.statusCode).toBe(404);
   })
 
 })

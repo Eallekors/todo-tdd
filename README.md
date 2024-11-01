@@ -1,4 +1,4 @@
-# Todo API
+# todo-tdd project
 
 ## Overview
 
